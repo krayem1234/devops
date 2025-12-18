@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 
 public class DepartmentService implements IDepartmentService {
-    @Autowired
+    
     DepartmentRepository departmentRepository;
 
     @Override
@@ -19,10 +19,9 @@ public class DepartmentService implements IDepartmentService {
     }
 
     @Override
-    public Department getDepartmentById(Long idDepartment) {
-        return departmentRepository.findById(idDepartment).get();
-    }
-
+    public Department getDepartment(Long idDepartment) {
+    return departmentRepository.findById(idDepartment).orElse(null);
+}
     @Override
     public Department saveDepartment(Department department) {
         return departmentRepository.save(department);
