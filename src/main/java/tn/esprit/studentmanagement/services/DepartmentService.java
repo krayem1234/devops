@@ -19,8 +19,9 @@ public class DepartmentService implements IDepartmentService {
     }
 
     @Override
-    public Department getDepartment(Long idDepartment) {
-    return departmentRepository.findById(idDepartment).orElse(null);
+public Department getDepartmentById(Long idDepartment) {
+    return departmentRepository.findById(idDepartment)
+        .orElseThrow(() -> new RuntimeException("Department not found with id: " + idDepartment));
 }
     @Override
     public Department saveDepartment(Department department) {
